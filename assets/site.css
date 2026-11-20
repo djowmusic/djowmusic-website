@@ -273,7 +273,7 @@ body.has-player{padding-bottom:76px}
 #originals,#remixes{scroll-margin-top:90px}
 
 /* video reels */
-.reels{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(280px,80vw),1fr));gap:18px;max-width:900px}
+.reels{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(240px,80vw),1fr));gap:18px}
 .reel{margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--panel)}
 .reel video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;background:#000}
 .reel figcaption{display:flex;justify-content:space-between;align-items:baseline;padding:12px 16px}
