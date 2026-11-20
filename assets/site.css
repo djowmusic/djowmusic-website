@@ -307,3 +307,10 @@ body.has-player{padding-bottom:76px}
 .form-ok{border:1px solid var(--neon);border-radius:10px;padding:clamp(20px,3vw,32px);background:rgba(177,77,255,.10)}
 .form-ok a{color:var(--neon-soft)}
 .form{position:relative}
+
+/* End of 2026 pack */
+.pack-strip{display:block;text-align:center;padding:14px 20px;background:linear-gradient(90deg,#2a0f4a,#5a1fa0,#2a0f4a);color:#fff;font-weight:600;letter-spacing:.02em;border-top:1px solid var(--neon);border-bottom:1px solid var(--neon)}
+.pack-strip:hover{filter:brightness(1.15)}
+.pack-strip .live-dot{margin-right:8px}
+.ig-note{margin-top:20px;border:1px solid var(--neon);border-radius:10px;padding:14px 16px;background:rgba(177,77,255,.14);line-height:1.5}
+.pack-head .figure img{border-radius:14px;box-shadow:0 30px 80px -20px rgba(177,77,255,.55)}
