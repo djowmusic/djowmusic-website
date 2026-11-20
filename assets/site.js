@@ -120,3 +120,10 @@ document.addEventListener('click',function(e){
   else if(a.classList.contains('play-btn'))gtag('event','track_play');
   else if(/wa\.me|mailto:/.test(h)&&a.closest('#form-out'))gtag('event','generate_lead',{method:/wa\.me/.test(h)?'whatsapp':'email'});
 },true);
+
+// only one thing plays at a time (reels and the track player)
+document.addEventListener('play',function(e){
+  document.querySelectorAll('audio,video').forEach(function(m){
+    if(m!==e.target&&!m.muted&&!m.paused)m.pause();
+  });
+},true);
