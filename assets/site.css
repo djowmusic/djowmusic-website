@@ -304,3 +304,6 @@ body.has-player{padding-bottom:76px}
 .rv .when-playing{display:none}.rv.playing .when-playing{display:inline}.rv.playing .when-stopped{display:none}
 .rv-note{max-width:70ch;margin:0}
 @media (max-width:760px){.rv-face{grid-template-columns:1fr}.rv-side{justify-items:start}}
+.form-ok{border:1px solid var(--neon);border-radius:10px;padding:clamp(20px,3vw,32px);background:rgba(177,77,255,.10)}
+.form-ok a{color:var(--neon-soft)}
+.form{position:relative}

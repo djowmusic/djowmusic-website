@@ -44,17 +44,34 @@
     });
   }
 
-  // booking form: compose the request, then send by email or WhatsApp
+  // booking form: sends the request to info@djowmusic.com (FormSubmit), falls back to email / WhatsApp
   var form=document.getElementById('booking-form');
   if(form){
-    var out=document.getElementById('form-out'),pre=out.querySelector('pre');
+    var out=document.getElementById('form-out'),pre=out.querySelector('pre'),ok=document.getElementById('form-ok'),btn=form.querySelector('button[type=submit]');
     form.addEventListener('submit',function(e){
       e.preventDefault();var d=new FormData(form);
+      if(d.get('_honey'))return;
       var lines=['Booking request for DJOW','','Name: '+d.get('name'),'Email: '+d.get('email'),'Phone: '+(d.get('phone')||'-'),'Event type: '+d.get('type'),'Date: '+(d.get('date')||'-'),'City / venue: '+(d.get('city')||'-'),'Guests: '+(d.get('guests')||'-'),'Set length: '+(d.get('length')||'-'),'','Details:',(d.get('details')||'-')];
       var text=lines.join('\n');pre.textContent=text;
-      out.querySelector('.mail').href='mailto:info@djowmusic.com?subject='+encodeURIComponent('Booking request - '+d.get('type')+' - '+(d.get('date')||'date tbc'))+'&body='+encodeURIComponent(text);
+      var subject='New booking inquiry - '+d.get('type')+' - '+(d.get('date')||'date tbc')+' - '+d.get('name');
+      out.querySelector('.mail').href='mailto:info@djowmusic.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(text);
       out.querySelector('.wa').href='https://wa.me/971545188640?text='+encodeURIComponent(text);
-      out.classList.add('show');out.scrollIntoView({behavior:'smooth',block:'center'});
+      btn.disabled=true;var label=btn.textContent;btn.textContent='Sending…';
+      var payload={'Name':d.get('name'),'email':d.get('email'),'Phone / WhatsApp':d.get('phone')||'-','Event type':d.get('type'),'Event date':d.get('date')||'-','City / venue':d.get('city')||'-','Guests':d.get('guests')||'-','Set length':d.get('length')||'-','Details':d.get('details')||'-',
+        '_subject':subject,'_template':'table','_replyto':d.get('email'),
+        '_autoresponse':'Thanks for your booking request. We have your details and will reply with availability and a quote. - DJOW'};
+      fetch('https://formsubmit.co/ajax/info@djowmusic.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)})
+        .then(function(r){return r.json();})
+        .then(function(j){
+          if(String(j.success)!=='true')throw new Error(j.message||'not sent');
+          form.hidden=true;out.classList.remove('show');ok.hidden=false;ok.scrollIntoView({behavior:'smooth',block:'center'});
+          try{if(window.fbq)fbq('track','Lead',{content_name:'Booking request',content_category:d.get('type')});}catch(x){}
+          try{if(window.gtag)gtag('event','generate_lead',{method:'website_form',event_type:d.get('type')});}catch(x){}
+        })
+        .catch(function(){
+          btn.disabled=false;btn.textContent=label;
+          out.classList.add('show');out.scrollIntoView({behavior:'smooth',block:'center'});
+        });
     });
     var cp=out.querySelector('.copy');
     if(cp)cp.addEventListener('click',function(){
