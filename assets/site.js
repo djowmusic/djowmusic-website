@@ -139,8 +139,26 @@ document.addEventListener('click',function(e){
 },true);
 
 // only one thing plays at a time (reels and the track player)
-document.addEventListener('play',function(e){
+function soloSound(src){
   document.querySelectorAll('audio,video').forEach(function(m){
-    if(m!==e.target&&!m.muted&&!m.paused)m.pause();
+    if(m!==src&&!m.muted&&!m.paused)m.pause();
   });
-},true);
+}
+document.addEventListener('play',function(e){ if(!e.target.muted) soloSound(e.target); },true);
+document.addEventListener('volumechange',function(e){ var v=e.target; if(!v.muted&&!v.paused) soloSound(v); },true);
+
+// gig reels: play muted while on screen, pause when scrolled away (tap the speaker for sound)
+(function(){
+  var reels=document.querySelectorAll('.reel video');
+  if(!reels.length) return;
+  reels.forEach(function(v){ v.muted=true; v.loop=true; v.playsInline=true; });
+  if(!('IntersectionObserver' in window)) return;
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      var v=e.target;
+      if(e.isIntersecting){ var p=v.play(); if(p&&p.catch) p.catch(function(){}); }
+      else if(!v.paused) v.pause();
+    });
+  },{threshold:0.4});
+  reels.forEach(function(v){ v.removeAttribute('autoplay'); io.observe(v); });
+})();
