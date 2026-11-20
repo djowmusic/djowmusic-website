@@ -280,3 +280,27 @@ body.has-player{padding-bottom:76px}
 .reel figcaption strong{font-family:"Big Shoulders Display",sans-serif;font-size:24px;text-transform:uppercase;letter-spacing:.02em}
 .reel figcaption span{color:var(--muted);font-size:14px}
 @media (max-width:900px){.hero-portrait{display:block;max-width:420px;width:100%;margin-top:28px !important;aspect-ratio:4/5}}
+
+/* RVRS browser demo */
+.rv{border:1px solid var(--line);border-radius:14px;background:radial-gradient(80% 90% at 20% 30%,#22103a,var(--panel) 70%);padding:clamp(20px,3.5vw,40px);display:grid;gap:22px}
+.rv-face{display:grid;grid-template-columns:minmax(0,300px) 1fr;gap:clamp(20px,4vw,48px);align-items:center}
+.rv-knob-wrap{display:grid;justify-items:center;gap:14px}
+.rv-knob{width:min(260px,70vw);border:0;padding:0;background:none;cursor:pointer;animation:none !important;color:inherit}
+.rv-knob .ring{transition:background .25s}
+.rv-knob .cap::after{transition:transform .25s cubic-bezier(.3,1.4,.5,1)}
+.rv-knob:focus-visible{outline:2px solid var(--neon-soft);outline-offset:6px;border-radius:50%}
+.rv-ticks,.rv-fx{display:flex;gap:8px;flex-wrap:wrap}
+.rv-ticks button,.rv-fx button{font:700 12px/1 var(--body);letter-spacing:.18em;color:var(--muted);background:#140d20;border:1px solid var(--line);border-radius:999px;padding:10px 14px;cursor:pointer}
+.rv-fx button{padding:14px 18px;font-size:13px}
+.rv-ticks button[aria-pressed=true],.rv-fx button[aria-pressed=true]{color:#fff;border-color:var(--neon);background:rgba(177,77,255,.22);box-shadow:0 0 18px rgba(177,77,255,.45)}
+.rv-side{display:grid;gap:18px}
+.rv-bpm-l{font:700 12px var(--body);letter-spacing:.2em;color:var(--muted);display:flex;align-items:center;gap:10px}
+.rv-bpm{width:84px;background:#140d20;border:1px solid var(--line);border-radius:8px;color:var(--text);font:600 16px var(--body);padding:8px 10px}
+.rv-srcbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.rv-up{cursor:pointer}
+.linkish{background:none;border:0;color:var(--neon-soft);text-decoration:underline;cursor:pointer;font:inherit;padding:0}
+.rv-wave{width:100%;height:140px;display:block;background:#0b0812;border:1px solid var(--line);border-radius:10px}
+.rv-ctrl{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.rv .when-playing{display:none}.rv.playing .when-playing{display:inline}.rv.playing .when-stopped{display:none}
+.rv-note{max-width:70ch;margin:0}
+@media (max-width:760px){.rv-face{grid-template-columns:1fr}.rv-side{justify-items:start}}

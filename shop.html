@@ -59,11 +59,44 @@ fbq('init','1334715830744723');fbq('track','PageView');
           <li>One licence key unlocks 2 computers</li>
         </ul>
         <div class="price">$29<small>one-time payment</small></div>
-        <div><a class="btn btn-neon" href="https://djowmusic.gumroad.com/l/djow-rvrs">Buy DJOW RVRS</a></div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-neon" href="https://djowmusic.gumroad.com/l/djow-rvrs">Buy DJOW RVRS</a><a class="btn btn-ghost" href="#try">Try it free</a></div>
       </div>
     </div>
   </div>
 </section>
+
+
+<section class="section" id="try">
+  <div class="wrap">
+    <div class="section-head"><div><span class="eyebrow">Free in your browser &middot; no download</span><h2>Try DJOW RVRS</h2></div></div>
+    <div class="rv" id="rvrs-demo" data-demo="assets/rvrs/demo-vocal.mp3">
+      <div class="rv-face">
+        <div class="rv-knob-wrap">
+          <button type="button" class="knob-face rv-knob" role="slider" aria-label="Riser length" aria-valuemin="0" aria-valuemax="3"><span class="ring"></span><span class="cap"></span><span class="label"><span>RVRS<small class="rv-len">1 BAR</small></span></span></button>
+          <div class="rv-ticks" role="group" aria-label="Riser length"><button type="button">1/2</button><button type="button">1</button><button type="button">2</button><button type="button">4</button></div>
+        </div>
+        <div class="rv-side">
+          <div class="rv-fx" role="group" aria-label="Effects">
+            <button type="button" data-fx="sweep">SWEEP</button><button type="button" data-fx="drive">DRIVE</button><button type="button" data-fx="wide">WIDE</button><button type="button" data-fx="chop">CHOP</button>
+          </div>
+          <label class="rv-bpm-l">BPM <input class="rv-bpm" type="number" min="60" max="200" value="128" inputmode="numeric"></label>
+          <div class="rv-srcbar"><span class="muted">Vocal:</span> <strong class="rv-src">Demo vocal</strong>
+            <label class="btn btn-ghost rv-up">Use your own vocal<input class="rv-file" type="file" accept="audio/*" hidden></label>
+            <button type="button" class="rv-demo linkish">Back to demo</button></div>
+        </div>
+      </div>
+      <canvas class="rv-wave" aria-label="Riser and vocal waveform"></canvas>
+      <div class="rv-ctrl">
+        <button type="button" class="btn btn-neon rv-play"><span class="when-stopped">&#9654; Play riser into vocal</span><span class="when-playing">&#9632; Stop</span></button>
+        <button type="button" class="btn btn-ghost rv-riser">Riser only</button>
+        <span class="rv-status muted" aria-live="polite">Loading…</span>
+      </div>
+      <p class="muted rv-note">Same engine as the plugin. Your file stays on your device. In your DAW, DJOW RVRS captures the vocal for you and lets you drag the riser straight onto a track as a 24-bit WAV.</p>
+      <div><a class="btn btn-neon" href="https://djowmusic.gumroad.com/l/djow-rvrs">Get DJOW RVRS - $29</a></div>
+    </div>
+  </div>
+</section>
+<script src="assets/rvrs-demo.js" defer></script>
 
 <section class="section">
   <div class="wrap">
