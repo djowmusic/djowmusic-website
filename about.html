@@ -17,6 +17,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Figtree:wght@400;600;700&family=Reem+Kufi:wght@600&display=swap">
 <link rel="stylesheet" href="assets/site.css">
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1334715830744723');fbq('track','PageView');
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GZWL5VTJ3J"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GZWL5VTJ3J');</script>
 </head>
 <body>
 <header class="site-head">
@@ -55,13 +61,27 @@
 <div class="stats">
   <div class="stat"><strong>50,000<em>+</em></strong><span>Crowd at Expo 2020 Dubai</span></div>
   <div class="stat"><strong>30,000<em>+</em></strong><span>FIFA World Cup Qatar 2022 fan festival</span></div>
-  <div class="stat"><strong>13</strong><span>Years behind the decks, since 2013</span></div>
+  <div class="stat"><strong>116K</strong><span>Followers on Instagram @djowmusic</span></div>
   <div class="stat"><strong>73</strong><span>Originals, remixes and mashups released</span></div>
 </div>
   </div>
 </section>
 
 </main>
+<div class="player" id="player" hidden>
+  <div class="wrap player-in">
+    <img class="p-cover" alt="" width="48" height="48">
+    <div class="p-meta"><strong class="p-title"></strong><span class="p-credit"></span></div>
+    <div class="p-ctrls">
+      <button type="button" class="p-prev" aria-label="Previous track">&#9198;</button>
+      <button type="button" class="p-play" aria-label="Play or pause"><span class="ico"></span></button>
+      <button type="button" class="p-next" aria-label="Next track">&#9197;</button>
+    </div>
+    <div class="p-bar"><span class="p-cur">0:00</span><input type="range" class="p-seek" min="0" max="1000" value="0" aria-label="Seek"><span class="p-dur">0:00</span></div>
+    <a class="p-dl dl" href="#" download>Download</a>
+  </div>
+  <audio preload="none"></audio>
+</div>
 <footer class="site-foot">
   <div class="wrap">
     <div>

@@ -62,3 +62,61 @@
     });
   }
 })();
+
+// ---------- player ----------
+(function(){
+  var bar=document.getElementById('player');if(!bar)return;
+  var au=bar.querySelector('audio'),list=[].slice.call(document.querySelectorAll('[data-track]')),cur=-1;
+  if(!list.length)return;
+  var $=function(s){return bar.querySelector(s)};
+  function fmt(s){s=Math.floor(s||0);return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')}
+  function mark(){
+    list.forEach(function(el,i){var b=el.querySelector('.play-btn');var on=(el.dataset.src===(list[cur]||{}).dataset?.src)&&!au.paused;if(b)b.classList.toggle('is-playing',on);el.classList.toggle('now',el.dataset.src===(list[cur]||{dataset:{}}).dataset.src);});
+    $('.p-play').classList.toggle('on',!au.paused);
+  }
+  function load(i){
+    cur=i;var d=list[i].dataset;
+    if(au.getAttribute('src')!==d.src){au.src=d.src;}
+    $('.p-title').textContent=d.title;$('.p-credit').textContent=d.credit;
+    var c=$('.p-cover');if(d.cover){c.src=d.cover;c.style.visibility='visible'}else c.style.visibility='hidden';
+    var dl=$('.p-dl');dl.href=d.src;dl.setAttribute('download','DJOW - '+d.title+'.mp3');
+    bar.hidden=false;document.body.classList.add('has-player');
+  }
+  function play(i){
+    var same=cur>=0&&list[i].dataset.src===list[cur].dataset.src;
+    if(same&&!au.paused){au.pause();return}
+    load(i);var p=au.play();if(p&&p.catch)p.catch(function(){});
+  }
+  list.forEach(function(el,i){var b=el.querySelector('.play-btn');if(b)b.addEventListener('click',function(e){e.preventDefault();play(i)})});
+  $('.p-play').addEventListener('click',function(){if(cur<0)return play(0);if(au.paused){var p=au.play();if(p&&p.catch)p.catch(function(){})}else au.pause()});
+  $('.p-next').addEventListener('click',function(){play((cur+1)%list.length)});
+  $('.p-prev').addEventListener('click',function(){if(au.currentTime>3)au.currentTime=0;else play((cur-1+list.length)%list.length)});
+  au.addEventListener('play',mark);au.addEventListener('pause',mark);
+  au.addEventListener('ended',function(){play((cur+1)%list.length)});
+  au.addEventListener('timeupdate',function(){$('.p-cur').textContent=fmt(au.currentTime);$('.p-dur').textContent=fmt(au.duration);if(au.duration)$('.p-seek').value=Math.round(au.currentTime/au.duration*1000)});
+  $('.p-seek').addEventListener('input',function(){if(au.duration)au.currentTime=this.value/1000*au.duration});
+})();
+
+// ---------- Meta pixel events ----------
+(function(){
+  function fb(){if(window.fbq)try{fbq.apply(null,arguments)}catch(e){}}
+  if(/shop\.html$/.test(location.pathname))fb('track','ViewContent',{content_name:'DJOW Shop'});
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a,button');if(!a)return;
+    var h=a.getAttribute('href')||'';
+    if(/gumroad\.com/.test(h))fb('track','InitiateCheckout',{content_name:a.textContent.trim()});
+    else if(a.classList.contains('dl'))fb('trackCustom','TrackDownload',{track:(a.getAttribute('download')||'').replace('.mp3','')});
+    else if(a.classList.contains('play-btn'))fb('trackCustom','TrackPlay');
+    else if(/wa\.me|mailto:/.test(h)&&a.closest('#form-out'))fb('track','Lead',{content_name:'Booking request'});
+  },true);
+})();
+
+// ---------- GA4 events ----------
+document.addEventListener('click',function(e){
+  var a=e.target.closest('a,button');if(!a||!window.gtag)return;
+  var h=a.getAttribute('href')||'';
+  if(/gumroad\.com/.test(h))gtag('event','begin_checkout',{item_name:a.textContent.trim()});
+  else if(a.classList.contains('dl'))gtag('event','file_download',{file_name:a.getAttribute('download')||''});
+  else if(a.classList.contains('play-btn'))gtag('event','track_play');
+  else if(/wa\.me|mailto:/.test(h)&&a.closest('#form-out'))gtag('event','generate_lead',{method:/wa\.me/.test(h)?'whatsapp':'email'});
+},true);
