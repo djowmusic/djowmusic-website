@@ -259,6 +259,7 @@
       out = { riserLen: n, l: L, r: R };
       draw(-1);
       status('Ready. Press play.');
+      if (pending !== null) { var po = pending; pending = null; play(po); }
     }, 30);
   }
 
@@ -292,8 +293,9 @@
     draw(-1);
   }
 
+  var pending = null;
   function play(riserOnly) {
-    if (!out) return;
+    if (!out) { pending = !!riserOnly; status('Loading the demo vocal…'); if (!src) loadDemo(); return; }
     document.querySelectorAll('audio,video').forEach(function (m) { if (!m.muted && !m.paused) m.pause(); });
     if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)();
     if (ctx.state === 'suspended') ctx.resume();
