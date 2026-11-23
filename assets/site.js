@@ -172,3 +172,12 @@ document.addEventListener('volumechange',function(e){ var v=e.target; if(!v.mute
   document.addEventListener('visibilitychange',function(){if(!document.hidden)go();});
   ['touchstart','click','scroll'].forEach(function(ev){window.addEventListener(ev,go,{once:true,passive:true});});
 })();
+
+/* press kit: copy bio buttons */
+document.querySelectorAll('.copy-bio').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.closest('.bio').querySelector('.bio-text').innerText.trim();
+    var done=function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy';},1800);};
+    if(navigator.clipboard){navigator.clipboard.writeText(t).then(done,function(){b.textContent='Select to copy';});}
+  });
+});
