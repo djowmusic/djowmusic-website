@@ -350,3 +350,21 @@ body.has-player{padding-bottom:76px}
 .track-info.now .t-play-lbl{color:var(--neon-soft)}
 .t-actions .btn.dl{font:700 14px/1 var(--body);letter-spacing:.1em;padding:16px 26px;border:1px solid transparent;color:#0b0612}
 .track-info .eyebrow:first-child{display:block;margin-top:6px}
+
+/* ---------- story ---------- */
+.story{padding-top:clamp(24px,3vw,40px)}
+.story-h{font-size:clamp(44px,6vw,84px);margin:12px 0 clamp(28px,4vw,48px);max-width:14ch}
+.story-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(18px,2.4vw,32px);counter-reset:st}
+.story-steps li{position:relative;padding-top:22px;border-top:2px solid var(--line)}
+.story-steps li::before{content:"";position:absolute;left:0;top:-6px;width:10px;height:10px;border-radius:50%;background:var(--neon);box-shadow:0 0 14px var(--neon)}
+.story-steps .when{display:block;font-family:"Big Shoulders Display",sans-serif;font-weight:800;font-size:clamp(24px,2.4vw,32px);line-height:1;text-transform:uppercase;color:var(--neon-soft);margin-bottom:12px}
+.story-steps p{color:var(--muted);line-height:1.6}
+@media (max-width:900px){.story-steps{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.story-steps{grid-template-columns:1fr}}
+.story-quote{margin:clamp(36px,5vw,64px) 0 0;padding:clamp(22px,3vw,36px) clamp(22px,3vw,40px);border-left:3px solid var(--neon);background:linear-gradient(90deg,rgba(177,77,255,.12),transparent)}
+.story-quote p{font-family:"Big Shoulders Display",sans-serif;font-weight:800;font-size:clamp(28px,3.4vw,46px);line-height:1.1;text-transform:uppercase;color:var(--text);max-width:32ch;margin:0}
+.story-teaser{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px 28px;margin-top:clamp(28px,4vw,44px);padding:22px 26px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--text);background:linear-gradient(90deg,rgba(177,77,255,.10),transparent);transition:border-color .2s}
+.story-teaser:hover{border-color:var(--neon)}
+.story-teaser .st-line{font-size:clamp(17px,1.6vw,21px);font-weight:600}
+.story-teaser .st-cta{font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:13px;color:var(--neon-soft);white-space:nowrap}
+@media (max-width:700px){.story-teaser{grid-template-columns:1fr}}
