@@ -162,3 +162,13 @@ document.addEventListener('volumechange',function(e){ var v=e.target; if(!v.mute
   },{threshold:0.4});
   reels.forEach(function(v){ v.removeAttribute('autoplay'); io.observe(v); });
 })();
+
+/* promo clip: force muted autoplay + loop, retry on first touch (iOS low power mode) */
+(function(){
+  var vs=[].slice.call(document.querySelectorAll('.promo-vid video'));
+  if(!vs.length) return;
+  function go(){vs.forEach(function(v){v.muted=true;v.defaultMuted=true;v.loop=true;v.setAttribute('playsinline','');var p=v.play();if(p&&p.catch)p.catch(function(){});});}
+  go();
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)go();});
+  ['touchstart','click','scroll'].forEach(function(ev){window.addEventListener(ev,go,{once:true,passive:true});});
+})();
