@@ -117,7 +117,7 @@
 // ---------- Meta pixel events ----------
 (function(){
   function fb(){if(window.fbq)try{fbq.apply(null,arguments)}catch(e){}}
-  if(/shop\.html$/.test(location.pathname))fb('track','ViewContent',{content_name:'DJOW Shop'});
+  if(/\/shop(\.html)?\/?$/.test(location.pathname))fb('track','ViewContent',{content_name:'DJOW Shop'});
   document.addEventListener('click',function(e){
     var a=e.target.closest('a,button');if(!a)return;
     var h=a.getAttribute('href')||'';
