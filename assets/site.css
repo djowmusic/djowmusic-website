@@ -325,7 +325,9 @@ body.has-player{padding-bottom:76px}
 .cat a.t:hover{color:var(--neon-soft)}
 .back-link{display:inline-block;margin-bottom:28px;color:var(--muted);text-decoration:none;font-weight:600;font-size:14px;letter-spacing:.04em}
 .back-link:hover{color:var(--neon-soft)}
-.track-split{align-items:center}
+.track-split{align-items:start}
+.track-art{align-self:start}
+
 .track-art{margin:0;aspect-ratio:1;border-radius:4px;overflow:hidden;border:1px solid var(--line);background:var(--panel);box-shadow:0 30px 80px -30px rgba(177,77,255,.45)}
 .track-art img{width:100%;height:100%;object-fit:cover;display:block}
 .cover-fb{width:100%;height:100%;display:flex;flex-direction:column;justify-content:space-between;padding:8%;background:radial-gradient(120% 90% at 20% 10%,#3a1466 0%,#14091f 55%,#08060d 100%)}
@@ -333,7 +335,7 @@ body.has-player{padding-bottom:76px}
 .cover-fb .fb-k{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--neon-soft)}
 .cover-fb .fb-b{font-family:"Big Shoulders Display",sans-serif;font-weight:900;font-size:28px;letter-spacing:.06em}
 .cover-fb .fb-b em{font-style:normal;color:var(--neon)}
-.track-info h1{font-size:clamp(54px,8vw,112px);line-height:.9}
+.track-info h1{font-size:clamp(52px,6.5vw,96px);line-height:.9}
 .t-credit{margin-top:10px}
 .t-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:26px}
 .t-play-lbl{font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:14px;cursor:pointer;margin-right:10px}
@@ -346,3 +348,5 @@ body.has-player{padding-bottom:76px}
 .t-row{margin-top:22px;display:flex;flex-direction:column;gap:10px}
 .btn.sm{padding:9px 14px;font-size:12px}
 .track-info.now .t-play-lbl{color:var(--neon-soft)}
+.t-actions .btn.dl{font:700 14px/1 var(--body);letter-spacing:.1em;padding:16px 26px;border:1px solid transparent;color:#0b0612}
+.track-info .eyebrow:first-child{display:block;margin-top:6px}
