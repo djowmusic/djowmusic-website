@@ -449,3 +449,22 @@ body.has-player{padding-bottom:76px}
 .su-msg.ok{color:var(--neon-soft,#d7a6ff)}.su-msg.err{color:#ff8a8a}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media (max-width:760px){.signup .wrap{grid-template-columns:1fr}}
+/* weddings page */
+.wed-rating{display:inline-flex;align-items:center;gap:8px;margin-top:20px;color:var(--text);text-decoration:none;font-size:15px}
+.wed-rating strong{font-size:17px}
+.stars{color:#ffc83d;letter-spacing:2px}
+.wed-reels{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:22px;align-items:start}
+.wed-reel{display:flex;flex-direction:column;gap:10px}
+.wed-reel .instagram-media{border-radius:14px!important;overflow:hidden}
+.wed-reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:22px}
+.wed-review{margin:0;border:1px solid var(--line);border-radius:6px;background:var(--panel);padding:26px;display:flex;flex-direction:column;gap:14px}
+.wed-review blockquote{margin:0}
+.wed-review blockquote p{margin:0;font-size:clamp(18px,1.6vw,21px);line-height:1.45;color:var(--text)}
+.wed-review figcaption{display:flex;flex-direction:column;gap:2px;margin-top:auto}
+.wed-review figcaption span{font-size:14px;color:var(--muted)}
+.wed-faq details{border-bottom:1px solid var(--line);padding:16px 0}
+.wed-faq summary{cursor:pointer;font-weight:600;color:var(--text);list-style:none;display:flex;justify-content:space-between;gap:16px}
+.wed-faq summary::-webkit-details-marker{display:none}
+.wed-faq summary::after{content:"+";color:var(--neon);font-size:22px;line-height:1}
+.wed-faq details[open] summary::after{content:"\2212"}
+.wed-faq details p{margin:10px 0 0}
