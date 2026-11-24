@@ -437,3 +437,15 @@ body.has-player{padding-bottom:76px}
 .press-tracks .t small{display:block;font-weight:400;color:var(--muted);font-size:14px;margin-top:4px}
 .press-tracks .t:hover{color:var(--neon-soft)}
 @media (max-width:900px){.facts{grid-template-columns:1fr 1fr}.bios{grid-template-columns:1fr}.press-photos,.press-logos{grid-template-columns:1fr 1fr}}
+
+/* email signup */
+.signup{border-top:1px solid var(--line);background:linear-gradient(180deg,rgba(177,77,255,.08),transparent);padding:clamp(40px,7vw,72px) 0}
+.signup .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:center}
+.signup h2{font:800 clamp(28px,4vw,44px)/1 var(--display);text-transform:uppercase;margin:8px 0 10px}
+.signup-form{display:flex;flex-wrap:wrap;gap:10px}
+.signup-form input{flex:1 1 220px;min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:15px 20px;color:var(--text);font:16px var(--body)}
+.signup-form input:focus{outline:none;border-color:var(--neon)}
+.su-msg{flex-basis:100%;margin:4px 0 0;font-size:14px;color:var(--muted);min-height:1.2em}
+.su-msg.ok{color:var(--neon-soft,#d7a6ff)}.su-msg.err{color:#ff8a8a}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:760px){.signup .wrap{grid-template-columns:1fr}}

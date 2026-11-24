@@ -181,3 +181,20 @@ document.querySelectorAll('.copy-bio').forEach(function(b){
     if(navigator.clipboard){navigator.clipboard.writeText(t).then(done,function(){b.textContent='Select to copy';});}
   });
 });
+
+/* email signup -> Klaviyo list YrCJyb */
+document.querySelectorAll('.signup-form').forEach(function(f){
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var inp=f.querySelector('input[type=email]'),msg=f.querySelector('.su-msg'),btn=f.querySelector('button');
+    var v=(inp.value||'').trim();
+    msg.className='su-msg';
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){msg.textContent='Please enter a valid email.';msg.classList.add('err');return;}
+    btn.disabled=true;msg.textContent='Adding you...';
+    fetch('https://a.klaviyo.com/client/subscriptions/?company_id=R3chFR',{method:'POST',headers:{'Content-Type':'application/vnd.api+json','revision':'2024-10-15'},
+      body:JSON.stringify({data:{type:'subscription',attributes:{custom_source:'djowmusic.com signup',profile:{data:{type:'profile',attributes:{email:v}}}},relationships:{list:{data:{type:'list',id:'YrCJyb'}}}}})})
+    .then(function(r){if(r.status===202||r.ok){msg.textContent='You are on the list. See you on the dancefloor.';msg.classList.add('ok');inp.value='';}else{throw r;}})
+    .catch(function(){msg.textContent='Something went wrong. Try again or email info@djowmusic.com.';msg.classList.add('err');})
+    .finally(function(){btn.disabled=false;});
+  });
+});
