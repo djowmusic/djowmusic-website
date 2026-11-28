@@ -55,7 +55,7 @@
       var text=lines.join('\n');pre.textContent=text;
       var subject='New booking inquiry - '+d.get('type')+' - '+(d.get('date')||'date tbc')+' - '+d.get('name');
       out.querySelector('.mail').href='mailto:info@djowmusic.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(text);
-      out.querySelector('.wa').href='https://wa.me/971545188640?text='+encodeURIComponent(text);
+      out.querySelector('.wa').href='https://wa.me/971545188640?text='+encodeURIComponent('Hi DJOW, I found you on djowmusic.com ('+(location.pathname.indexOf('wedding')>-1?'weddings page':'bookings page')+').\n\n'+text);
       btn.disabled=true;var label=btn.textContent;btn.textContent='Sending…';
       var payload={'Name':d.get('name'),'email':d.get('email'),'Phone / WhatsApp':d.get('phone')||'-','Event type':d.get('type'),'Event date':d.get('date')||'-','City / venue':d.get('city')||'-','Guests':d.get('guests')||'-','Set length':d.get('length')||'-','Details':d.get('details')||'-',
         '_subject':subject,'_template':'table','_replyto':d.get('email'),
